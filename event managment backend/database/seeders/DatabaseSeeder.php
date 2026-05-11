@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         $settings->putMany('localization', ['currency' => 'INR', 'tax_percentage' => 18]);
         $settings->putMany('payment', ['default_gateway' => 'manual']);
 
-        User::query()->firstOrCreate(
+        User::query()->updateOrCreate(
             ['email' => 'admin@example.com'],
             [
                 'name' => 'Aarav Sharma',
@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        User::query()->firstOrCreate(
+        User::query()->updateOrCreate(
             ['email' => 'manager@example.com'],
             [
                 'name' => 'Priya Mehta',

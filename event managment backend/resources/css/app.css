@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+        @apply bg-slate-100 text-slate-900;
+    }
+
+    ::selection {
+        @apply bg-rose-200 text-slate-900;
+    }
+}
+
+@layer components {
+    .panel-card {
+        @apply rounded-[28px] border border-white/80 bg-white/90 shadow-[0_24px_80px_-48px_rgba(15,23,42,0.45)] backdrop-blur;
+    }
+
+    .panel-table {
+        @apply min-w-full text-sm text-slate-700;
+    }
+
+    .panel-input {
+        @apply mt-1 block w-full rounded-2xl border-slate-200 bg-white/90 text-sm shadow-sm transition focus:border-rose-400 focus:ring-rose-400;
+    }
+
+    .panel-label {
+        @apply text-sm font-medium text-slate-700;
+    }
+
+    .panel-select {
+        @apply panel-input;
+    }
+
+    .panel-btn {
+        @apply inline-flex items-center justify-center rounded-2xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-800;
+    }
+
+    .panel-btn-secondary {
+        @apply inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-50;
+    }
+
+    .panel-badge {
+        @apply inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em];
+    }
+
+    .panel-stat {
+        @apply flex min-h-[176px] flex-col justify-between rounded-[30px] border border-white/80 bg-white/90 p-6 shadow-[0_24px_80px_-48px_rgba(15,23,42,0.45)] backdrop-blur;
+    }
+
+    .panel-nav-link {
+        @apply flex items-center justify-between rounded-2xl px-4 py-3.5 text-sm font-medium transition;
+    }
+
+    .panel-nav-link-active {
+        @apply bg-white text-slate-950 shadow-[0_18px_40px_-28px_rgba(255,255,255,0.95)];
+    }
+
+    .panel-nav-link-inactive {
+        @apply text-slate-300 hover:bg-white/10 hover:text-white;
+    }
+
+    .panel-chip {
+        @apply inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold;
+    }
+}

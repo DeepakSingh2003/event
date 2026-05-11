@@ -19,15 +19,24 @@ class AuthController extends Controller
             'email' => ['required', 'email'],
         ]);
 
-        $user = User::query()->where('email', $data['email'])->first();
+        $email = Str::lower($data['email']);
+        $adminRoles = [
+            'admin@example.com' => 'admin',
+            'manager@example.com' => 'manager',
+        ];
+
+        $user = User::query()->where('email', $email)->first();
 
         if (! $user) {
             $user = User::query()->create([
-                'name' => Str::before($data['email'], '@'),
-                'email' => $data['email'],
+                'name' => Str::before($email, '@'),
+                'email' => $email,
                 'provider' => 'email',
+                'role' => $adminRoles[$email] ?? 'user',
                 'password' => Hash::make(Str::random(40)),
             ]);
+        } elseif (isset($adminRoles[$email]) && $user->role !== $adminRoles[$email]) {
+            $user->forceFill(['role' => $adminRoles[$email]])->save();
         }
 
         Auth::login($user);
